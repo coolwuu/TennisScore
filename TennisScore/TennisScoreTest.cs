@@ -4,7 +4,7 @@ using NSubstitute;
 namespace TennisScore
 {
     [TestClass]
-    public class UnitTest1
+    public class TennisScoreTest
     {
         [TestMethod]
         public void Love_All()
