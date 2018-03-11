@@ -28,7 +28,7 @@ namespace TennisScore
                     return "Duece";
                 return SameScoreLookup(game);
             }
-            return "Love All";
+            return _scoreLookUp[game.FirstPlayerScore] +" "+_scoreLookUp[game.SecondPlayerScore];
         }
 
         private string SameScoreLookup(Game game)

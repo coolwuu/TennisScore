@@ -42,6 +42,12 @@ namespace TennisScore
             GivenScore(3, 3);
             ScoreShouldBe("Duece");
         }
+        [TestMethod]
+        public void Fifteen_Love()
+        {
+            GivenScore(1, 0);
+            ScoreShouldBe("Fifteen Love");
+        }
 
         private void ScoreShouldBe(string expected)
         {
@@ -49,7 +55,7 @@ namespace TennisScore
             Assert.AreEqual(expected, scoreResult);
         }
 
-        private void GivenScore(int secondPlayerScore, int firstPlayerScore)
+        private void GivenScore(int firstPlayerScore,int secondPlayerScore)
         {
             _repository.GetGame(_anyGameId).Returns(new Game {Id = _anyGameId, FirstPlayerScore = firstPlayerScore, SecondPlayerScore = secondPlayerScore});
         }
