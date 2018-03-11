@@ -22,11 +22,28 @@ namespace TennisScore
         public string ScoreResult(int gameId)
         {
             var game = _repo.GetGame(gameId);
-            if (game.FirstPlayerScore == game.SecondPlayerScore)
+            if (IsSameScore(game))
             {
-                return _scoreLookUp[game.FirstPlayerScore] + " All";
+                if (IsDuece(game))
+                    return "Duece";
+                return SameScoreLookup(game);
             }
             return "Love All";
+        }
+
+        private string SameScoreLookup(Game game)
+        {
+            return _scoreLookUp[game.FirstPlayerScore] + " All";
+        }
+
+        private static bool IsSameScore(Game game)
+        {
+            return game.FirstPlayerScore == game.SecondPlayerScore;
+        }
+
+        private static bool IsDuece(Game game)
+        {
+            return game.FirstPlayerScore >= 3;
         }
     }
 }

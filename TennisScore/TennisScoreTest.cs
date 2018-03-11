@@ -36,6 +36,12 @@ namespace TennisScore
             GivenScore(2, 2);
             ScoreShouldBe("Thirty All");
         }
+        [TestMethod]
+        public void Forty_All()
+        {
+            GivenScore(3, 3);
+            ScoreShouldBe("Duece");
+        }
 
         private void ScoreShouldBe(string expected)
         {
