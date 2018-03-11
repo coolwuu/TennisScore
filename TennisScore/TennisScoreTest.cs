@@ -42,11 +42,26 @@ namespace TennisScore
             GivenScore(3, 3);
             ScoreShouldBe("Duece");
         }
+
         [TestMethod]
         public void Fifteen_Love()
         {
             GivenScore(1, 0);
             ScoreShouldBe("Fifteen Love");
+        }
+
+        [TestMethod]
+        public void Fifteen_Thirty()
+        {
+            GivenScore(1, 2);
+            ScoreShouldBe("Fifteen Thirty");
+        }
+
+        [TestMethod]
+        public void Forty_Thirty()
+        {
+            GivenScore(3, 2);
+            ScoreShouldBe("Forty Thirty");
         }
 
         private void ScoreShouldBe(string expected)
