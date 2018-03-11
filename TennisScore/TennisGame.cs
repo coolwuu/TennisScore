@@ -34,15 +34,17 @@ namespace TennisScore
             {
                 if (Math.Abs(game.FirstPlayerScore - game.SecondPlayerScore) == 1)
                 {
-                    return game.FirstPlayerName + " Adv";
+                    return (game.FirstPlayerScore > game.SecondPlayerScore
+                               ? game.FirstPlayerName
+                               : game.SecondPlayerName) + " Adv";
                 }
             }
-            return _scoreLookUp[game.FirstPlayerScore] +" "+_scoreLookUp[game.SecondPlayerScore];
+            return _scoreLookUp[game.FirstPlayerScore] + " " + _scoreLookUp[game.SecondPlayerScore];
         }
 
-        private string SameScoreLookup(Game game)
+        private static bool IsDuece(Game game)
         {
-            return _scoreLookUp[game.FirstPlayerScore] + " All";
+            return game.FirstPlayerScore >= 3;
         }
 
         private static bool IsSameScore(Game game)
@@ -50,9 +52,9 @@ namespace TennisScore
             return game.FirstPlayerScore == game.SecondPlayerScore;
         }
 
-        private static bool IsDuece(Game game)
+        private string SameScoreLookup(Game game)
         {
-            return game.FirstPlayerScore >= 3;
+            return _scoreLookUp[game.FirstPlayerScore] + " All";
         }
     }
 }

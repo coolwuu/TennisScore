@@ -71,6 +71,13 @@ namespace TennisScore
             ScoreShouldBe("Wuu Adv");
         }
 
+        [TestMethod]
+        public void SecondPlayerAdv()
+        {
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 3, SecondPlayerScore = 4, SecondPlayerName = "Lily" });
+            ScoreShouldBe("Lily Adv");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             var scoreResult = _tennisGame.ScoreResult(_anyGameId);
