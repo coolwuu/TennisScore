@@ -67,7 +67,7 @@ namespace TennisScore
         [TestMethod]
         public void FirstPlayerAdv()
         {
-            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3 });
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3, FirstPlayerName = "Wuu" });
             ScoreShouldBe("Wuu Adv");
         }
 

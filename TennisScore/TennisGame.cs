@@ -29,6 +29,14 @@ namespace TennisScore
                     return "Duece";
                 return SameScoreLookup(game);
             }
+
+            if (game.FirstPlayerScore > 3 || game.SecondPlayerScore > 3)
+            {
+                if (Math.Abs(game.FirstPlayerScore - game.SecondPlayerScore) == 1)
+                {
+                    return game.FirstPlayerName + " Adv";
+                }
+            }
             return _scoreLookUp[game.FirstPlayerScore] +" "+_scoreLookUp[game.SecondPlayerScore];
         }
 
