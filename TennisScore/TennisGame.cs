@@ -7,6 +7,13 @@ namespace TennisScore
     {
         private readonly IRepository<Game> _repo;
 
+        private readonly Dictionary<int, string> _scoreLookUp = new Dictionary<int, string>
+        {
+            {0, "Love"},
+            {1, "Fifteen"},
+            {2, "Thirty"},
+        };
+
         public TennisGame(IRepository<Game> repo)
         {
             _repo = repo;
@@ -15,17 +22,10 @@ namespace TennisScore
         public string ScoreResult(int gameId)
         {
             var game = _repo.GetGame(gameId);
-            var scoreLookup = new Dictionary<int, string>
-            {
-                {0, "Love"},
-                {1, "Fifteen"},
-                {2, "Thirty"},
-            };
             if (game.FirstPlayerScore == game.SecondPlayerScore)
             {
-                return scoreLookup[game.FirstPlayerScore] + " All";
+                return _scoreLookUp[game.FirstPlayerScore] + " All";
             }
-
             return "Love All";
         }
     }
