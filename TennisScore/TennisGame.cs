@@ -39,7 +39,9 @@ namespace TennisScore
                                : game.SecondPlayerName) + " Adv";
                 }
 
-                return game.FirstPlayerName + " Win";
+                return (game.FirstPlayerScore > game.SecondPlayerScore
+                           ? game.FirstPlayerName
+                           : game.SecondPlayerName) + " Win";
             }
             return _scoreLookUp[game.FirstPlayerScore] + " " + _scoreLookUp[game.SecondPlayerScore];
         }

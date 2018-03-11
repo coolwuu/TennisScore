@@ -77,11 +77,18 @@ namespace TennisScore
             GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 3, SecondPlayerScore = 4, SecondPlayerName = "Lily" });
             ScoreShouldBe("Lily Adv");
         }
+
         [TestMethod]
         public void FirstPlayerWin()
         {
             GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 5, SecondPlayerScore = 3, FirstPlayerName = "Wuu" });
             ScoreShouldBe("Wuu Win");
+        }
+        [TestMethod]
+        public void SecondPlayerWin()
+        {
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 3, SecondPlayerScore = 5, SecondPlayerName = "Lily" });
+            ScoreShouldBe("Lily Win");
         }
 
         private void ScoreShouldBe(string expected)
