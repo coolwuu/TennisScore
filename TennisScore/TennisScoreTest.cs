@@ -19,49 +19,56 @@ namespace TennisScore
         [TestMethod]
         public void Love_All()
         {
-            GivenScore(0, 0);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 0, SecondPlayerScore = 0 });
             ScoreShouldBe("Love All");
         }
 
         [TestMethod]
         public void Fifteen_All()
         {
-            GivenScore(1, 1);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 1, SecondPlayerScore = 1 });
             ScoreShouldBe("Fifteen All");
         }
 
         [TestMethod]
         public void Thirty_All()
         {
-            GivenScore(2, 2);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 2, SecondPlayerScore = 2 });
             ScoreShouldBe("Thirty All");
         }
         [TestMethod]
         public void Forty_All()
         {
-            GivenScore(3, 3);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 3, SecondPlayerScore = 3 });
             ScoreShouldBe("Duece");
         }
 
         [TestMethod]
         public void Fifteen_Love()
         {
-            GivenScore(1, 0);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 1, SecondPlayerScore = 0 });
             ScoreShouldBe("Fifteen Love");
         }
 
         [TestMethod]
         public void Fifteen_Thirty()
         {
-            GivenScore(1, 2);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 1, SecondPlayerScore = 2 });
             ScoreShouldBe("Fifteen Thirty");
         }
 
         [TestMethod]
         public void Forty_Thirty()
         {
-            GivenScore(3, 2);
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 3, SecondPlayerScore = 2 });
             ScoreShouldBe("Forty Thirty");
+        }
+
+        [TestMethod]
+        public void FirstPlayerAdv()
+        {
+            GivenGame(new Game { Id = _anyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3 });
+            ScoreShouldBe("Wuu Adv");
         }
 
         private void ScoreShouldBe(string expected)
@@ -70,9 +77,9 @@ namespace TennisScore
             Assert.AreEqual(expected, scoreResult);
         }
 
-        private void GivenScore(int firstPlayerScore,int secondPlayerScore)
+        private void GivenGame(Game game)
         {
-            _repository.GetGame(_anyGameId).Returns(new Game {Id = _anyGameId, FirstPlayerScore = firstPlayerScore, SecondPlayerScore = secondPlayerScore});
+            _repository.GetGame(_anyGameId).Returns(game);
         }
     }
 }
