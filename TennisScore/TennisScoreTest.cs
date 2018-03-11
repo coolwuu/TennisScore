@@ -22,11 +22,19 @@ namespace TennisScore
             GivenScore(0, 0);
             ScoreShouldBe("Love All");
         }
+
         [TestMethod]
         public void Fifteen_All()
         {
             GivenScore(1, 1);
             ScoreShouldBe("Fifteen All");
+        }
+
+        [TestMethod]
+        public void Thirty_All()
+        {
+            GivenScore(2, 2);
+            ScoreShouldBe("Thirty All");
         }
 
         private void ScoreShouldBe(string expected)

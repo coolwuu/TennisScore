@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TennisScore
 {
@@ -14,10 +15,17 @@ namespace TennisScore
         public string ScoreResult(int gameId)
         {
             var game = _repo.GetGame(gameId);
-            if (game.FirstPlayerScore == 1)
+            var scoreLookup = new Dictionary<int, string>
             {
-                return "Fifteen All";
+                {0, "Love"},
+                {1, "Fifteen"},
+                {2, "Thirty"},
+            };
+            if (game.FirstPlayerScore == game.SecondPlayerScore)
+            {
+                return scoreLookup[game.FirstPlayerScore] + " All";
             }
+
             return "Love All";
         }
     }
